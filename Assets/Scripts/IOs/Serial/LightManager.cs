@@ -127,7 +127,6 @@ public class LightManager : MonoBehaviour
                 //Debug.Log($"CMD49: {string.Join(", ", data)}");
                 int index = data[1];
                 mp = Convert.ToByte(RingLedsWhitePointSubtractor * ((data[2]+data[3]+data[4]) / 765));
-                print(new Color32((byte)(data[2] - mp), (byte)(data[3] - mp), (byte)(data[4] - mp), 255));
                 ringLeds[index].color = new Color32((byte)(data[2] - mp), (byte)(data[3] - mp), (byte)(data[4] - mp), 255);
                 if (!SerialManager.startUp)
                     SerialManager.startUp = true;
