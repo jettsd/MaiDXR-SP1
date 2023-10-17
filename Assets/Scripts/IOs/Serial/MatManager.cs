@@ -5,14 +5,14 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Threading;
 
-public class LightManager : MonoBehaviour
+public class MatManager : MonoBehaviour
 {
     static SerialPort p1Serial = new SerialPort ("COM51", 115200);
     public List<List<byte>> dataListP1 = new List<List<byte>>();
     public List<List<byte>> dataListStreamP1 = new List<List<byte>>();
     public List<List<byte>> dataListInstantP1 = new List<List<byte>>();
     static bool isUpdateCMD = false;
-    public List<Light> RingLeds = new List<Light>();
+    public List<Renderer> RingLeds = new List<Renderer>();
     public byte RingLedsWhitePointSubtractor = 130;
     public Light BodyLed;
     public Light DisplayLed;
@@ -96,7 +96,7 @@ public class LightManager : MonoBehaviour
         return data;
     }
 
-    void UpdateLedListStream(ref List<List<byte>> dataList, List<Light> ringLeds, Light bodyLed, Light displayLed)
+    void UpdateLedListStream(ref List<List<byte>> dataList, List<Renderer> ringLeds, Light bodyLed, Light displayLed)
     {
         if (dataList.Count < 1)
             return;
@@ -106,7 +106,7 @@ public class LightManager : MonoBehaviour
             dataList.Clear();
     }
 
-    void UpdateLedListInstant(ref List<List<byte>> dataList, List<Light> ringLeds, Light bodyLed, Light displayLed)
+    void UpdateLedListInstant(ref List<List<byte>> dataList, List<Renderer> ringLeds, Light bodyLed, Light displayLed)
     {
         while (dataList.Count > 0)
         {
@@ -115,7 +115,7 @@ public class LightManager : MonoBehaviour
         }
     }
 
-    void UpdateLED(List<byte> _data, List<Light> ringLeds, Light bodyLed, Light dispayLed)
+    void UpdateLED(List<byte> _data, List<Renderer> ringLeds, Light bodyLed, Light dispayLed)
     {
         var data = new List<byte>(_data);
         byte mp;
@@ -128,7 +128,7 @@ public class LightManager : MonoBehaviour
                 int index = data[1];
                 mp = Convert.ToByte(RingLedsWhitePointSubtractor * ((data[2]+data[3]+data[4]) / 765));
                 print(new Color32((byte)(data[2] - mp), (byte)(data[3] - mp), (byte)(data[4] - mp), 255));
-                ringLeds[index].color = new Color32((byte)(data[2] - mp), (byte)(data[3] - mp), (byte)(data[4] - mp), 255);
+                ringLeds[index].material.color = new Color32((byte)(data[2] - mp), (byte)(data[3] - mp), (byte)(data[4] - mp), 255);
                 if (!SerialManager.startUp)
                     SerialManager.startUp = true;
                 break;
@@ -155,7 +155,7 @@ public class LightManager : MonoBehaviour
                 break;
         }
     }
-    IEnumerator Fade(byte start, byte end, List<Light> ringLeds, Color32 prevColor, Color32 nowColor, float duration)
+    IEnumerator Fade(byte start, byte end, List<Renderer> ringLeds, Color32 prevColor, Color32 nowColor, float duration)
     {
         duration = 4095 / duration * 8 / 1000;
         for (float time = 0f; time < duration; time += Time.deltaTime)
@@ -163,16 +163,16 @@ public class LightManager : MonoBehaviour
             float progress = time / duration;
             for (int i = start; i < end; i++)
             {
-                ringLeds[i].color = Color.Lerp(prevColor, nowColor, progress);
+                ringLeds[i].material.color = Color.Lerp(prevColor, nowColor, progress);
             }
             yield return null;
         }
     }
-    void Switch(byte start, byte end, List<Light> ringLeds, Color32 Color)
+    void Switch(byte start, byte end, List<Renderer> ringLeds, Color32 Color)
     {
         for (int i = start; i < end; i++)
         {
-            ringLeds[i].color = Color;
+            ringLeds[i].material.color = Color;
         }
     }
 }
