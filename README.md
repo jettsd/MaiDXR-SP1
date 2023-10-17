@@ -45,7 +45,7 @@ Open Source VR Arcade Simulator
 - All Oculus device (Oculus Desktop App)
 - Tested on Quest 2 through Oculus link (Native and via SteamVR) and ALVR (via SteamVR). The Hand Balls position is by default adjusted for the Quest 2 controller.
 
-- **How to use**
+**How to use**
 ---
 - Get game somehow and make sure it will run properly. (DO NOT ASK ANYTHING THAT IS DIRECTLY RELATED TO THE GAME IT SELF)
 - Download [latest version of MaiDXR](https://github.com/xiaopeng12138/MaiDXR/releases)
