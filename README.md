@@ -1,4 +1,4 @@
-# MaiDXR
+# MaiDXR - NightMode (Old-ReadMe)
 Open Source VR Arcade Simulator
 
 QQ Group: 261946477
@@ -22,7 +22,7 @@ Discord: [Discord](https://discord.gg/4aFV5QJWN5)
 
 **Preview**
 ---
-<img src="https://github.com/xiaopeng12138/MaiDXR/blob/main/PreviewImage/MaiDXR_PreviewImage.png?raw=true" width="250" />
+<img src="https://github.com/AsamiKafune/MaiDXR-NightMode/blob/main/PreviewImage/MaiDXR_PreviewImage.png?raw=true" width="250" />
 
 
 **Inspired by**
@@ -125,5 +125,4 @@ ToDo
 - Add visual touch and button feedback
 
 Huge thanks to HelloKS, derole1, hecomi, V17AMax, and every one in BSAH
-
 If you want to add any function pls commit PR, I will accept it as soon as possible and make a new build/release.
