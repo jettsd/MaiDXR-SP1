@@ -26,6 +26,7 @@ Open Source VR Arcade Simulator
 - Inverted controller controls to be more inline with most vr movement systems
 - Reverted world textures to that of the orginal project
 - Added sliders for movement and turn speed in tweaks menu
+- Moved customizable buttons to side of the machine
 - General bug fixes
 
 **Preview**
