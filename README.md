@@ -57,7 +57,7 @@ Open Source VR Arcade Simulator
 ---
 - Get game somehow and make sure it will run properly. (DO NOT ASK ANYTHING THAT IS DIRECTLY RELATED TO THE GAME IT SELF)
 - Set up [AquaMai](https://github.com/hykilpikonna/AquaDX/tree/v1-dev/AquaMai) and set "SinglePlayer=true"
-- Download [latest version of MaiDXR](https://github.com/xiaopeng12138/MaiDXR/releases)
+- Download [latest version of MaiDXR](https://github.com/jettsd/MaiDXR-sp1/releases)
 - Download and install [com0com](https://storage.googleapis.com/google-code-archive-downloads/v2/code.google.com/powersdr-iq/setup_com0com_W7_x64_signed.exe)
 - Configure com0com to bind COM3 and COM5 (it must be these two ports), COM4 and COM6 is optional (bind them will make your startup process faster).
 - You must enable the enable buffer option in com0com on both ports of all pairs. Otherwise, your MaiDXR will crash after the logo.
