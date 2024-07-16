@@ -23,6 +23,7 @@ Open Source VR Arcade Simulator
 **About SinglePlayer fork**
 ---
 - AS FAR AS I CAN TELL RIGHT NOW THIS FOR IS DEPENDENT ON [AquaMai](https://github.com/hykilpikonna/AquaDX/tree/v1-dev/AquaMai) "SinglePlayer=true"
+- Inverted controller controls to be more inline with most vr movement systems
 - Reverted world textures to that of the orginal project
 - Added sliders for movement and turn speed in tweaks menu
 - General bug fixes
