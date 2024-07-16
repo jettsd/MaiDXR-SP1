@@ -1,4 +1,4 @@
-# MaiDXR - NightMode
+# MaiDXR - SinglePlayer
 Open Source VR Arcade Simulator
 
 **About this project**
@@ -12,13 +12,19 @@ Open Source VR Arcade Simulator
 - 3rd person camera and smooth camera
 - 3 customizable buttons
 
-**About this fork**
+**About NightMode fork**
 ---
 - (new) optimize model for performance
 - (new) environment - darkroom
 - (fix) LIV maimai model not render
 - (change) real time ring light to material (more FPS)
 - (change) remove 2nd player model and monitor
+
+**About SinglePlayer fork**
+---
+- Reverted world textures to that of the orginal project
+- Added sliders for movement and turn speed
+- General bug fixes
 
 **Preview**
 ---
