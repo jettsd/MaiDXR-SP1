@@ -63,7 +63,7 @@ Open Source VR Arcade Simulator
 - Disable DummyTouchPanel in mai2.ini.
 - If you need button light, pls bind COM21 to COM51 (it must be these two ports)(Do not disable DummyLED!).
 - Run the game in window mode by adding [Unity Standalone Player command line arguments](https://docs.unity3d.com/Manual/PlayerCommandLineArguments.html) in xxxxx.bat and make sure there is no black bar. Recommend setting for 1080p or greater display: "xxxxxx.exe -screen-fullscreen 0 -screen-width 585 -screen-height 1050"
-- If you want the game to run at 1080p in windows turn your monitor to portrait and in xxxx.bat change the resolution to "-screen-width 1080 -screen-height 1920"
+- If you want the game to run at 1080p in windows turn your monitor to portrait and in xxxxx.bat change the resolution to "-screen-width 1080 -screen-height 1920"
 - - Start MaiDXR first then start the game.
 - If your touch is not working, try to Enter the test menu and exit it.
 
