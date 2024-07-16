@@ -2,6 +2,7 @@ using UnityEngine.UI;
 using UnityEngine;
 using System.Collections.Generic;
 using Newtonsoft.Json.Linq;
+using UnityEngine.XR.Interaction.Toolkit;
 
 public class PlayerSettingManager : MonoBehaviour
 {
@@ -9,12 +10,17 @@ public class PlayerSettingManager : MonoBehaviour
     private Transform RHandTransform = null;
     private Transform PlayerTransform = null;
     private ControllerHapticManager[] HapticManagers = null;
+    private ActionBasedContinuousMoveProvider MoveProvider;
+    private ActionBasedContinuousTurnProvider TurnProvider;
+
 
     public ValueManager PlayerHeightManager;
     public float HandSize = 8;
     public float HandPositionX = 0;
     public float HandPositionY = 0;
     public float HandPositionZ = 0;
+    public float MovementSpeed = 0;
+    public float TurnSpeed = 0;
     public List<Slider> Sliders;
     public Locker Locker;
     public NoneVRSettingManager NVRManager;
@@ -29,6 +35,8 @@ public class PlayerSettingManager : MonoBehaviour
         RHandTransform = XRObj.transform.Find("Camera Offset").Find("RightHand Controller").Find("RHand");
         PlayerTransform = XRObj.transform;
         HapticManagers = XRObj.GetComponentsInChildren<ControllerHapticManager>();
+        MoveProvider = XRObj.GetComponent<ActionBasedContinuousMoveProvider>();
+        TurnProvider = XRObj.GetComponent<ActionBasedContinuousTurnProvider>();
         Locker.LocalMotion = XRObj;
         NVRManager.NVRCameraTargetFP = XRObj.transform.Find("Camera Offset").Find("Main Camera");
         NVRManager.GetNVRMode();
@@ -43,6 +51,9 @@ public class PlayerSettingManager : MonoBehaviour
         GetHandPositionZ();
         GetHapticDuration();
         GetHapticAmplitude();
+        GetMovementSpeed();
+        GetTurnSpeed();
+
     }
     private void SetSliders()
     {
@@ -67,6 +78,12 @@ public class PlayerSettingManager : MonoBehaviour
                     break;
                 case "HpAmplitude":
                     slider.value = HapticManagers[0].amplitude;
+                    break;
+                case "MovementSpeed":
+                    slider.value = MovementSpeed;
+                    break;
+                case "TurnSpeed":
+                    slider.value = TurnSpeed;
                     break;
             }
         }
@@ -112,6 +129,18 @@ public class PlayerSettingManager : MonoBehaviour
         if (PlayerConfig.HasKey("HapticAmplitude"))
             HapticManagers[0].amplitude = (float)PlayerConfig.GetDouble("HapticAmplitude");
         SetHapticAmplitude(HapticManagers[0].amplitude);
+    }
+    void GetMovementSpeed()
+    {
+        if (PlayerConfig.HasKey("MovementSpeed"))
+            MovementSpeed = (float)PlayerConfig.GetDouble("MovementSpeed");
+        SetMovementSpeed(MovementSpeed);
+    }
+    void GetTurnSpeed()
+    {
+        if (PlayerConfig.HasKey("TurnSpeed"))
+            TurnSpeed = (float)PlayerConfig.GetDouble("TurnSpeed");
+        SetTurnSpeed(TurnSpeed);
     }
 
     public void SetPlayerHeight()
@@ -162,6 +191,16 @@ public class PlayerSettingManager : MonoBehaviour
             controller.amplitude = amplitude;
         }
         PlayerConfig.SetDouble("HapticAmplitude", amplitude);
+    }
+    public void SetMovementSpeed(float movementSpeed)
+    {
+        MoveProvider.moveSpeed = movementSpeed;
+        PlayerConfig.SetDouble("MovementSpeed", movementSpeed);
+    }
+    public void SetTurnSpeed(float turnSpeed)
+    {
+        TurnProvider.turnSpeed = turnSpeed;
+        PlayerConfig.SetDouble("TurnSpeed", turnSpeed);
     }
     private static class PlayerConfig
     {
